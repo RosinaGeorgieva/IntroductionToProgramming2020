@@ -1,7 +1,0 @@
-1. Запознайте се с се с решето на Ерастотен:
-https://upload.wikimedia.org/wikipedia/commons/b/b9/Sieve_of_Eratosthenes_animation.gif
-Напишете програма, която имитира този алгоритъм с едномерен статичен масив.
-
-2. Запознайте се с алгоритъма на Чудновски за смятане на цифрите на числото π.
-https://en.wikipedia.org/wiki/Chudnovsky_algorithm 
-Имплементирайте формулата на C++.
