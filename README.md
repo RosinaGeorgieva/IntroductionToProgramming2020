@@ -2,4 +2,4 @@
 ####  Content by weeks: 
 ##### :one: Variable types. Bitwise operators.
 ##### :two: If operator. Ternary operator.
-##### :three: Switch case.
+##### :three: Switch case. Enum type.
