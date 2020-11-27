@@ -8,3 +8,4 @@
 ###### :four: Loops. For, while, do...while
 ###### :five: Loops. For, while, do...while
 ###### :six: Functions. Arrays
+###### :seven: Exercise
