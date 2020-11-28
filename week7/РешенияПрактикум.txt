@@ -1,0 +1,391 @@
+> ЗАДАЧИ ЗА МАСИВИ >
+1 >>>>>>>>>>>>>>>>>
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	int arr[100];
+	int arr2[100];
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> arr[i];
+	}
+	for (int i = 0; i < n; i++) {
+		cin >> arr2[i];
+	}
+	bool allFromFirstAreContainedInSecond = true;
+	for (int i = 0; i < n; i++) {
+		bool isContained = false;
+		for (int j = 0; j < n; j++) {
+			if (arr[i] == arr2[j]) {
+				isContained = true;
+				break;
+			}
+		}
+		if (!isContained) {
+			allFromFirstAreContainedInSecond = false;
+			break;
+		}
+	}
+	if (!allFromFirstAreContainedInSecond) {
+		cout << "false";
+	}
+	else {
+		bool allFromSecondAreContainedInFirst = true;
+		for (int i = 0; i < n; i++) {
+			bool isContained = false;
+			for (int j = 0; j < n; j++) {
+				if (arr2[i] == arr[j]) {
+					isContained = true;
+					break;
+				}
+			}
+			if (!isContained) {
+				allFromSecondAreContainedInFirst = false;
+				break;
+			}
+		}
+		if (!allFromSecondAreContainedInFirst) {
+			cout << "false";
+		}
+		else {
+			cout << "true";
+		}
+	}
+	return 0;
+}
+
+2 >>>>>>>>>>>>>>>>>
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	int arr[100];
+	int arr2[100];
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> arr[i];
+	}
+	
+	for (int i = 0; i < n; i++) {
+		if (arr[i] < i) {
+			arr[i] = arr[i] * arr[i];
+		}
+		else if (arr[i] == i) {
+			arr[i] = -arr[i];
+		}
+		else {
+			arr[i] = arr[i] - 1;
+		}
+	}
+	for (int i = 0; i < n; i++) {
+		cout <<  arr[i];
+	}
+	return 0;
+}
+
+3 >>>>>>>>>>>>>>>>>
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	int arr[100];
+	int arr2[100];
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> arr[i];
+	}
+	int max = 0;
+	int index = 0;
+	for (int i = 0; i < n; i++) {
+		int currLength = 1;
+		int currStartingIndex = i;
+		while (arr[i] == arr[i + 1]) {
+			i++;
+			currLength++;
+		}
+		if (currLength > max) {
+			max = currLength;
+			index = currStartingIndex;
+		}
+	}
+	cout << max << index;
+	for (int i = 0; i < n; i++) {
+		cout <<  arr[i];
+	}
+	return 0;
+}
+
+4 >>>>>>>>>>>>>>>>>
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	double a[100];
+	double b[100];
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> a[i];
+	}
+	for (int i = 0; i < n; i++) {
+		cin >> b[i];
+	}
+	double scalarProduct = 0;
+	for (int i = 0; i < n; i++) {
+		scalarProduct += a[i]*b[i];
+	}
+	cout << scalarProduct;
+	return 0;
+}
+
+5 >>>>>>>>>>>>>>>>>
+//това е скица как да намерите кои са тези елементи; за решение с изтриване, в.ж. зад. от семинар
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	int arr[100];
+	int arr2[100];
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> arr[i];
+	}
+	for (int i = 1; i < n - 1; i++) {
+		if (arr[i] < arr[i - 1] && arr[i] < arr[i + 1]) {
+			cout << arr[i];
+		}
+	}
+	
+	return 0;
+}
+
+6 >>>>>>>>>>>>>>>>>
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	int arr[100];
+	int arr2[100];
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> arr[i];
+	}
+	int max = 1;
+	for (int i = 0; i < n - 1; i++) {
+		int currLen = 1;
+		while (arr[i] <= arr[i + 1]) {
+			currLen++;
+			i++;
+		}
+		if (currLen > max) {
+			max = currLen;
+		}
+	}
+	cout << max;
+	return 0;
+}
+
+7 >>>>>>>>>>>>>>>>>
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	char arr[100];
+	int arr2[100];
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> arr[i];
+	}
+	int max = 1;
+	int histo[26];
+	for (int i = 0; i < 26; i++) {
+		histo[i] = 0;
+	}
+	for (int i = 0; i < 26; i++) {
+		int curr = 0;
+		for (int j = 0; j < n; j++) {
+			if (arr[j] == 97 + i) {
+				curr++;
+			}
+		}
+		histo[i] = curr;
+	}
+	for (int i = 0; i < 26; i++) {
+		cout << histo[i];
+	}
+	return 0;
+}
+
+> ЗАДАЧИ ЗА ФУНКЦИИ >
+1 и 2 >>>>>>>>>>>>>
+#include <iostream>
+
+using namespace std;
+
+int isPrime(int number) {
+	int isPrime = true;
+	for (int i = 2; i <= number - 1; i++) {
+		if (number % i == 0) {
+			isPrime = false;
+			break;
+		}
+	}
+	return isPrime;
+}
+
+int main() {
+	int arr[100];
+	int a, b; 
+	cin >> a >> b;
+	int cnt = 0;
+	if (a == 1) {
+		cnt = -1;
+	}
+	for (int i = a; i <= b; i++) {
+		if (isPrime(i)) {
+			cout << i;
+			cnt++;
+		}
+	}
+	cout << cnt;
+	return 0;
+}
+
+3 >>>>>>>>>>>>>>>>>
+#include <iostream>
+
+using namespace std;
+
+int numDig(int n){
+	int num = 0;
+	while (n > 0) {
+		num++;
+		num = num / 10;
+	}
+	return 0;
+}
+
+int reverse(int n) {
+	int rev = 0;
+	int num = n;
+	do {
+		int digit = num % 10;
+		rev = rev * 10 + digit;
+		num = num / 10;
+	} while (num != 0);
+	return rev;
+}
+
+bool isPal(int number) {
+	int reversed = reverse(number);
+	return reversed == number;
+}
+
+int main() {
+	int arr[100];
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> arr[i];
+	}
+	bool fl = true;
+	for (int i = 0; i < n; i++) {
+		if (!isPal(arr[i])) {
+			fl = false;
+			break;
+		}
+	}
+	cout << fl;
+	return 0;
+}
+
+4 >>>>>>>>>>>>>>>>>
+#include <iostream>
+
+using namespace std;
+
+
+bool isSLet(char symbol) {
+	if (symbol >= 'a' && symbol <= 'z') {
+		return true;
+	}
+}
+
+bool isCapLet(char symbol) {
+	if (symbol >= 'A' && symbol <= 'Z') {
+		return true;
+	}
+}
+
+int main() {
+	char arr[100];
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> arr[i];
+	}
+	int smalls = 0;
+	int bigs = 0;
+	for (int i = 0; i < n; i++) {
+		if (isSLet(arr[i])) {
+			smalls++;
+		}
+		if (isCapLet(arr[i])) {
+			bigs++;
+		}
+	}
+	cout << smalls << bigs;
+	return 0;
+}
+
+
+5 >>>>>>>>>>>>>>>>>
+#include <iostream>
+
+using namespace std;
+
+
+bool isPowOfTwo(int number) {
+	int one_less_than_number = number - 1;
+	int a = number & one_less_than_number;
+	if (a == 0) {
+		return true;
+	}
+}
+
+
+int main() {
+	char arr[100];
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> arr[i];
+	}
+	bool fl = true;
+	for (int i = 0; i < n; i++) {
+		int num = arr[i];
+		if (!isPowOfTwo(num)) {
+			cout << arr[i] << endl;
+			fl = false;
+			break;
+		}
+	}
+	cout << fl;
+	return 0;
+}
+
+
