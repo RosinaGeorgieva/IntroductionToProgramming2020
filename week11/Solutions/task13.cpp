@@ -68,39 +68,29 @@ void findPath(char **map, int n, int m, int x, int y, int finalX, int finalY, ch
     map[x][y] = '-';
 
     x = x + 1;
-    if (!(outOfBounds(x, y, n, m) || map[x][y] == '-'))
-    {
-        path[pathIndex++] = 'D';
-        findPath(map, n, m, x, y, finalX, finalY, path, pathIndex);
-        pathIndex--;
-    }
+    path[pathIndex++] = 'D';
+    findPath(map, n, m, x, y, finalX, finalY, path, pathIndex);
+    pathIndex--;
     x = x - 1;
 
     x = x - 1;
-    if (!(outOfBounds(x, y, n, m) || map[x][y] == '-'))
-    {
-        path[pathIndex++] = 'U';
-        findPath(map, n, m, x, y, finalX, finalY, path, pathIndex);
-        pathIndex--;
-    }
+    path[pathIndex++] = 'U';
+    findPath(map, n, m, x, y, finalX, finalY, path, pathIndex);
+    pathIndex--;
     x = x + 1;
 
     y = y - 1;
-    if (!(outOfBounds(x, y, n, m) || map[x][y] == '-'))
-    {
-        path[pathIndex++] = 'L';
-        findPath(map, n, m, x, y, finalX, finalY, path, pathIndex);
-        pathIndex--;
-    }
+    path[pathIndex++] = 'L';
+    findPath(map, n, m, x, y, finalX, finalY, path, pathIndex);
+    pathIndex--;
     y = y + 1;
 
     y = y + 1;
-    if (!(outOfBounds(x, y, n, m) || map[x][y] == '-'))
-    {
-        path[pathIndex++] = 'R';
-        findPath(map, n, m, x, y, finalX, finalY, path, pathIndex);
-        pathIndex--;
-    }
+
+    path[pathIndex++] = 'R';
+    findPath(map, n, m, x, y, finalX, finalY, path, pathIndex);
+    pathIndex--;
+
     y = y - 1;
 
     map[x][y] = '.';

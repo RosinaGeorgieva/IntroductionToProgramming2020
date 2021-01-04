@@ -1,67 +1,98 @@
 #include <iostream>
 #include <cstring>
 
-bool numberCheck(char symbol)
+bool isDigit(char a)
 {
-    return (symbol >= '0' && symbol <= '9');
+    return a >= '0' && a <= '9';
+}
+// 0 * 10 + 1 => 1 * 10 + 2 => 12 * 10 + 3 => 123
+int stoi(char *str, int i)
+{
+    if (i == 1)
+    {
+        return *str - '0';
+    }
+
+    return (10 * stoi(str, i - 1) + str[i - 1] - '0');
+    // 10 * (10 * (1) + 2) + 3
 }
 
-int apply(char oper, int larg, int rarg)
+int getNumber(char *str, int &i)
 {
-    switch (oper)
+    char *number = new char[10];
+    int charIndex = 0;
+    while (isDigit(str[i]))
+    {
+        number[charIndex++] = str[i];
+        i++;
+    }
+    number[charIndex] = '\0';
+    int result = stoi(number, strlen(number));
+    delete[] number;
+    return result;
+}
+
+int apply(char op, int larg, int rarg)
+{
+    switch (op)
     {
     case '+':
         return larg + rarg;
     case '*':
         return larg * rarg;
-
     default:
-        return 0;
+        break;
     }
+    return 0;
 }
 
-int ind = 0;
-
-int calculate(char *str)
+int calculateRec(char *str, int &i)
 {
+    int larg, rarg;
+    char op;
 
-    if (str[ind] == '\0')
+    if (str[i] == '(')
     {
-        return 0;
+        i++;
+        larg = calculateRec(str, i);
     }
 
-    int larg;
-
-    if (str[ind] == '(')
+    if (isDigit(str[i]))
     {
-        ind++;
-        larg = calculate(str);
+        larg = getNumber(str, i);
     }
 
-    if (numberCheck(str[ind]))
+    if (str[i] == ')' || str[i] == '\0')
     {
-        larg = str[ind++] - '0';
-    }
-
-    if (str[ind] == ')' || str[ind] == '\0')
-    {
-        ind++;
+        i++;
         return larg;
     }
-
-    char op = str[ind++];
-
-    int rarg = calculate(str);
+    op = str[i++];
+    rarg = calculateRec(str, i);
 
     return apply(op, larg, rarg);
 }
 
+int calculate(char *str)
+{
+    int index = 0;
+    return calculateRec(str, index);
+}
+
 int main()
 {
-    const int MAX_SIZE = 64;
-    char input[MAX_SIZE];
-    std::cin.getline(input, MAX_SIZE);
+    // const int MAX_SIZE = 64;
+    // char input[MAX_SIZE];
+    // std::cin.getline(input, MAX_SIZE);
 
-    std::cout << calculate(input) << std::endl;
+    char example1[] = "(2+3*((1+4)*5)+7)";
+    char example2[] = "2+(3*2)+7";
+    char example3[] = "(25*3)+(5+6)";
+
+    std::cout << calculate(example1) << std::endl; // 98
+    std::cout << calculate(example2) << std::endl; // 15
+    std::cout << calculate(example3) << std::endl; // 86
+
+    // std::cout << calculate(input) << std::endl;
     return 0;
 }
