@@ -11,5 +11,5 @@
 ###### :seven: Functions. Arrays
 ###### :eight: Pointers
 ###### :nine: Char arrays and strings
-###### :ten: Operations with matrices. Dynamic memory allocation
-###### :eleven: Recursion
+###### :one::zero: Operations with matrices. Dynamic memory allocation
+###### :one::one: Recursion
