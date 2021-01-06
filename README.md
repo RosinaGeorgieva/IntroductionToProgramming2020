@@ -8,8 +8,9 @@
 ###### :four: Loops. For, while, do...while
 ###### :five: Loops. For, while, do...while
 ###### :six: Functions. Arrays
-###### :seven: Functions. Arrays
+###### :seven: Functions. Arrays. Test 1 preparation
 ###### :eight: Pointers
 ###### :nine: Char arrays and strings
 ###### :one::zero: Operations with matrices. Dynamic memory allocation
 ###### :one::one: Recursion
+###### :one::two: Recursion. Test 2 preparation
