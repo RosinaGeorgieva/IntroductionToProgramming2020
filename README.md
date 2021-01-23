@@ -14,3 +14,5 @@
 ###### :one::zero: Operations with matrices
 ###### :one::one: Recursion
 ###### :one::two: Recursion. Test 2 preparation
+###### :one::three: High order functions
+###### :one::four: Exam preparation
